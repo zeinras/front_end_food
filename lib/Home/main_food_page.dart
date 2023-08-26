@@ -5,6 +5,8 @@ import 'package:front_end_food/Widget/big_texts.dart';
 import 'package:front_end_food/Widget/small_texts.dart';
 import 'package:front_end_food/colors.dart';
 
+import '../food_page_body.dart';
+
 class MainFoodPage extends StatefulWidget {
   const MainFoodPage({Key? key}) : super(key: key);
 
@@ -22,6 +24,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
         children: [
           Container(
             child: Container(
+
               decoration: BoxDecoration(
                   border: Border.all(
                 color: Colors.black, // Border color
@@ -52,6 +55,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
                   ),
                   Center(
                     child: Container(
+
                       width: 45,
                       height: 45,
                       child: Icon(
@@ -67,6 +71,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
               ),
             ),
           ),
+          FoodPageBody()
         ],
       ),
     );
