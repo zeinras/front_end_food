@@ -25,11 +25,6 @@ class _MainFoodPageState extends State<MainFoodPage> {
           Container(
             child: Container(
 
-              decoration: BoxDecoration(
-                  border: Border.all(
-                color: Colors.black, // Border color
-                width: 1.0, // Border width
-              )),
               margin: EdgeInsets.only(top: 45, bottom: 15),
               padding: EdgeInsets.only(left: 20, right: 20),
               child:
