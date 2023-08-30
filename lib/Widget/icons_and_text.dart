@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:front_end_food/Widget/small_texts.dart';
 
 import '../utils/colors.dart';
+import '../utils/dimensions.dart';
 
 class IconsAndWidget extends StatelessWidget {
   final int SB1;
@@ -28,15 +29,15 @@ class IconsAndWidget extends StatelessWidget {
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-        Icon(Icons.circle,color: AppColors.yellowColor,size: 18,),
+        Icon(Icons.circle,color: AppColors.yellowColor,size: Dimensions().DDh(18),),
         //SizedBox(width: SB1.toDouble()),
         SmallTexts(text: "Normal",color:AppColors.paraColor,size: 10 ),
         //SizedBox(width:SB2.toDouble()),
-        Icon(Icons.location_on_sharp ,color: AppColors.mainColor,size: 20,),
+        Icon(Icons.location_on_sharp ,color: AppColors.mainColor,size: Dimensions().DDh(20),),
         //SizedBox(width:SB3.toDouble()),
         SmallTexts(text: "1.7KM",color:AppColors.paraColor,size: 10,),
         //SizedBox(width: SB4.toDouble()),
-        Icon(Icons.access_time_rounded ,color: AppColors.iconColor2,size: 20,),
+        Icon(Icons.access_time_rounded ,color: AppColors.iconColor2,size: Dimensions().DDh(20),),
         //SizedBox(width: SB5.toDouble()),
         SmallTexts(text: "32 min",color:AppColors.paraColor,size: 10,),
 

@@ -18,28 +18,25 @@ class MainFoodPage extends StatefulWidget {
 class _MainFoodPageState extends State<MainFoodPage> {
   @override
   Widget build(BuildContext context) {
-    print("current height is "+ MediaQuery.of(context).size.height.toString());
-    print("current height is "+ MediaQuery.of(context).size.width.toString());
+    print("current height is " + MediaQuery.of(context).size.height.toString());
+    print("current height is " + MediaQuery.of(context).size.width.toString());
     return Scaffold(
       body:
           // mshan yrfa3 el row la foo2
           Column(
         children: [
-          Container( decoration: BoxDecoration(
-              border:Border.all(
-                color: Colors.white,
-                  width: 5
-              ),),
-
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.white, width: 5),
+            ),
             child: Container(
               decoration: BoxDecoration(
-                border:Border.all(
-                    color: Colors.white,
-                    width: 5
-                ),),
-
-              margin: EdgeInsets.only(top: Dimensions.Padding45T, bottom: Dimensions.Padding15B),
-              padding: EdgeInsets.only(left: 20, right: 20),
+                border: Border.all(color: Colors.white, width: 5),
+              ),
+              margin: EdgeInsets.only(
+                  top: Dimensions.Padding45T, bottom: Dimensions.Padding15B),
+              padding: EdgeInsets.only(
+                  left: Dimensions().DDw(20), right: Dimensions().DDw(20)),
               child:
                   //default el row howe center
                   Row(
@@ -55,23 +52,23 @@ class _MainFoodPageState extends State<MainFoodPage> {
                       ),
                       Row(
                         children: [
-                          SmallTexts(text: "Narsingdi",color: Colors.black54),
-                        Icon(Icons.arrow_drop_down)
+                          SmallTexts(text: "Narsingdi", color: Colors.black54),
+                          Icon(Icons.arrow_drop_down)
                         ],
                       ),
                     ],
                   ),
                   Center(
                     child: Container(
-
-                      width: 45,
+                      width: Dimensions().DDw(40),
                       height: Dimensions.pageViewHeaderContainer,
                       child: Icon(
                         Icons.search,
                         color: Colors.white,
+                        size: Dimensions().DDh(25),
                       ),
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
+                          borderRadius: BorderRadius.circular(20),
                           color: AppColors.mainColor),
                     ),
                   ),
@@ -79,7 +76,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
               ),
             ),
           ),
-          FoodPageBody()
+          Expanded(child: SingleChildScrollView(child: FoodPageBody()))
         ],
       ),
     );
