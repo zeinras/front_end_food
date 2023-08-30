@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
-
+import 'package:front_end_food/utils/dimensions.dart';
+import 'package:get/get.dart';
 class SmallTexts extends StatelessWidget {
   // "?" to make it optional
   final Color? color;
   final String text;
   double size;
   double height;
+  static double screenHeight = Get.context!.height;
 
 
 //constructer
@@ -20,7 +22,7 @@ class SmallTexts extends StatelessWidget {
 
       style: TextStyle(
           color: color,
-          fontSize: size,
+          fontSize: screenHeight/(781/size),
           fontWeight: FontWeight.w400,
           fontFamily: 'Roboto',
       height: height),

@@ -5,7 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:front_end_food/Widget/big_texts.dart';
 import 'package:front_end_food/Widget/small_texts.dart';
-import 'package:front_end_food/colors.dart';
+import 'package:front_end_food/utils/colors.dart';
+import 'package:front_end_food/utils/dimensions.dart';
 
 import 'Widget/icons_and_text.dart';
 
@@ -17,19 +18,20 @@ class FoodPageBody extends StatefulWidget {
 }
 
 class _FoodPageBodyState extends State<FoodPageBody> {
-  //adesh bbiyane mn el slider abel w ba3d
+  //adesh bbiyane mn el slider abel w ba3d w ma btt2athar ela bel hotrestart
   PageController pageController = PageController(viewportFraction: 0.85);
 
   var currentpage = 0.0;
   double scaleFactor = 0.8;
-  double height = 220;
-
+  double height = Dimensions.pageViewContainer;
+// 7tena el page listner bl init mshan kl ma ysir t3'yir bel widget btrja3 btsht3'l init w byet3'ayar kimet el controller
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     pageController.addListener(() {
       //adding "!" to assure flutter this will never be null
+      // it is crutial to use set state because change has occured to the widget
       setState(() {
         currentpage = pageController.page!;
         //int currentPageIndex = currentpage.toInt();
@@ -37,21 +39,22 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       });
     });
   }
-
+// for memmory
   void dispose() {
     pageController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Column(
       children: [
         Container(
-          height: 280,
+          height: Dimensions.pageViewMainContainer,
 
           decoration: BoxDecoration(
             border: Border.all(
-              color: Colors.black12, // Border color
+              color: Colors.green, // Border color
               width: 1.0, // Border width
             ),
           ),
@@ -66,15 +69,18 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           ),
         ),
 
-
-    new DotsIndicator(
-    dotsCount: 5,
-    position: currentpage,
-    decorator: DotsDecorator(
-    size: const Size.square(9.0),
-    activeSize: const Size(18.0, 9.0),
-    activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
-    ),)
+// needs yaml
+    Container(
+      child: new DotsIndicator(
+      dotsCount: 5,
+      position: currentpage,
+      decorator: DotsDecorator(
+      size: Size.square(Dimensions().DDh(9)),
+      activeColor:AppColors.mainColor ,
+      activeSize: Size(Dimensions().DDh(18),Dimensions().DDh(9)),
+      activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+      ),),
+    )
 
 
 
@@ -84,7 +90,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
   Widget _buildPageItem(int index) {
     // this matrix has x,y and z
+    //this is for the zoom in and zoom out effect
     Matrix4 matrix = new Matrix4.identity();
+
     if (index == currentpage.floor()) {
       var currScale = 1 - (currentpage - index) * (1 - scaleFactor);
       var currTrans = height * (1 - currScale) / 2;
@@ -126,9 +134,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       child: Stack(
         children: [
           Container(
-            height: 220,
+            height: Dimensions.pageViewContainer,
             // hay el margin kaman bt3mel masafe ben el sliders
-            margin: EdgeInsets.only(left: 5, right: 5),
+            margin: EdgeInsets.only(left: Dimensions().DDw(5) , right: Dimensions().DDw(5) ),
             decoration: BoxDecoration(
                 border: Border.all(
                   color: Colors.black12,
@@ -145,10 +153,11 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: 110,
+             // height: Dimensions.pageViewAlignContainer,
+              height: Dimensions.pageViewAlignContainer,
               //width: 350,
               //margin btb3da 3an el 7awaf
-              margin: EdgeInsets.only(left: 20, right: 20, bottom: 10),
+              margin: EdgeInsets.only(left: 35, right: 35,),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
@@ -167,12 +176,14 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               ),
               // Return the widget for the page item
               child: Container(
-                  padding: EdgeInsets.only(top: 10, left: 15, right: 15),
+
+                  padding: EdgeInsets.only(top:
+                  Dimensions().DDh(10), left: Dimensions().DDw(15), right:Dimensions().DDw(15)  ),
                   decoration: BoxDecoration(
                       // lama ma 7tet hey dal for moraba3
                       borderRadius: BorderRadius.circular(30),
                       border: Border.all(
-                        color: Colors.black12, // Border color
+                        color: Colors.white, // Border color
                         width: 1.0,
                       )),
                   child: Column(
@@ -180,7 +191,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                       children: [
                         BigTexts(text: "Chineese Side"),
                         SizedBox(
-                          height: 10,
+                          height: Dimensions.sizeBox10h,
                         ),
                         Row(
                           children: [
@@ -191,17 +202,17 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                     (index) => Icon(
                                           Icons.star,
                                           color: AppColors.mainColor,
-                                          size: 15,
+                                          size: Dimensions().DDh(15),
                                         ))),
                             // ben el boxes
-                            SizedBox(width: 10),
+                            SizedBox(width:Dimensions.sizeBox10w),
                             SmallTexts(text: "4.5", color: Colors.grey),
-                            SizedBox(width: 20),
+                            SizedBox(width: Dimensions.sizeBox20w),
                             SmallTexts(
                                 text: "1287 comments", color: Colors.grey),
                           ],
                         ),
-                        SizedBox(height: 15),
+                        SizedBox(height: Dimensions.sizeBox10h),
                         IconsAndWidget(),
                       ])),
             ),

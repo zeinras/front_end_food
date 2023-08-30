@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:front_end_food/Widget/small_texts.dart';
 
-import '../colors.dart';
+import '../utils/colors.dart';
 
 class IconsAndWidget extends StatelessWidget {
   final int SB1;
@@ -23,18 +23,21 @@ class IconsAndWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+
       child:
-      Row(children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
         Icon(Icons.circle,color: AppColors.yellowColor,size: 18,),
-        SizedBox(width: SB1.toDouble()),
+        //SizedBox(width: SB1.toDouble()),
         SmallTexts(text: "Normal",color:AppColors.paraColor,size: 10 ),
-        SizedBox(width:SB2.toDouble()),
+        //SizedBox(width:SB2.toDouble()),
         Icon(Icons.location_on_sharp ,color: AppColors.mainColor,size: 20,),
-        SizedBox(width:SB3.toDouble()),
+        //SizedBox(width:SB3.toDouble()),
         SmallTexts(text: "1.7KM",color:AppColors.paraColor,size: 10,),
-        SizedBox(width: SB4.toDouble()),
+        //SizedBox(width: SB4.toDouble()),
         Icon(Icons.access_time_rounded ,color: AppColors.iconColor2,size: 20,),
-        SizedBox(width: SB5.toDouble()),
+        //SizedBox(width: SB5.toDouble()),
         SmallTexts(text: "32 min",color:AppColors.paraColor,size: 10,),
 
 

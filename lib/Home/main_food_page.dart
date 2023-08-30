@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/icon.dart';
 import 'package:front_end_food/Widget/big_texts.dart';
 import 'package:front_end_food/Widget/small_texts.dart';
-import 'package:front_end_food/colors.dart';
+import 'package:front_end_food/utils/colors.dart';
+import 'package:front_end_food/utils/dimensions.dart';
 
 import '../food_page_body.dart';
 
@@ -17,15 +18,27 @@ class MainFoodPage extends StatefulWidget {
 class _MainFoodPageState extends State<MainFoodPage> {
   @override
   Widget build(BuildContext context) {
+    print("current height is "+ MediaQuery.of(context).size.height.toString());
+    print("current height is "+ MediaQuery.of(context).size.width.toString());
     return Scaffold(
       body:
           // mshan yrfa3 el row la foo2
           Column(
         children: [
-          Container(
-            child: Container(
+          Container( decoration: BoxDecoration(
+              border:Border.all(
+                color: Colors.white,
+                  width: 5
+              ),),
 
-              margin: EdgeInsets.only(top: 45, bottom: 15),
+            child: Container(
+              decoration: BoxDecoration(
+                border:Border.all(
+                    color: Colors.white,
+                    width: 5
+                ),),
+
+              margin: EdgeInsets.only(top: Dimensions.Padding45T, bottom: Dimensions.Padding15B),
               padding: EdgeInsets.only(left: 20, right: 20),
               child:
                   //default el row howe center
@@ -52,7 +65,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
                     child: Container(
 
                       width: 45,
-                      height: 45,
+                      height: Dimensions.pageViewHeaderContainer,
                       child: Icon(
                         Icons.search,
                         color: Colors.white,

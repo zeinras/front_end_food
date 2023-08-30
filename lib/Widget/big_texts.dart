@@ -1,4 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
+
+import '../utils/dimensions.dart';
 
 class BigTexts extends StatelessWidget {
   // "?" to make it optional
@@ -6,6 +9,7 @@ class BigTexts extends StatelessWidget {
   final String text;
   double size;
   TextOverflow overflow;
+  static double screenHeight = Get.context!.height;
 
 
 //constructer
@@ -21,7 +25,7 @@ class BigTexts extends StatelessWidget {
   maxLines: 1,
       style: TextStyle(
           color: color,
-          fontSize: size,
+          fontSize: screenHeight/(781/size),
 
           fontWeight: FontWeight.w400,
           fontFamily: 'Roboto'),
