@@ -13,12 +13,20 @@ class IconsAndWidget extends StatelessWidget {
   final int SB3;
   final int SB4;
   final int SB5;
+  final String text1;
+  final String text2;
+  final String text3;
+
+
   const IconsAndWidget({Key? key,
-    this.SB1=10,
-    this.SB2=30,
+    this.SB1=5,
+    this.SB2=20,
     this.SB3=5,
-    this.SB4=30,
-    this.SB5=10
+    this.SB4=20,
+    this.SB5=5,
+    required this.text1,
+    required this.text2,
+    required this.text3
 
   }) : super(key: key);
   @override
@@ -27,19 +35,19 @@ class IconsAndWidget extends StatelessWidget {
 
       child:
       Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
         Icon(Icons.circle,color: AppColors.yellowColor,size: Dimensions().DDh(18),),
-        //SizedBox(width: SB1.toDouble()),
-        SmallTexts(text: "Normal",color:AppColors.paraColor,size: 10 ),
-        //SizedBox(width:SB2.toDouble()),
+        SizedBox(width:Dimensions().DDw(SB1)),
+        SmallTexts(text: text1 ,color:AppColors.paraColor,size: 10 ),
+        SizedBox(width:Dimensions().DDw(SB2)),
         Icon(Icons.location_on_sharp ,color: AppColors.mainColor,size: Dimensions().DDh(20),),
-        //SizedBox(width:SB3.toDouble()),
-        SmallTexts(text: "1.7KM",color:AppColors.paraColor,size: 10,),
-        //SizedBox(width: SB4.toDouble()),
+        SizedBox(width:Dimensions().DDw(SB3)),
+        SmallTexts(text: text2,color:AppColors.paraColor,size: 10,),
+        SizedBox(width: Dimensions().DDw(SB4)),
         Icon(Icons.access_time_rounded ,color: AppColors.iconColor2,size: Dimensions().DDh(20),),
-        //SizedBox(width: SB5.toDouble()),
-        SmallTexts(text: "32 min",color:AppColors.paraColor,size: 10,),
+        SizedBox(width: Dimensions().DDw(SB5)),
+        SmallTexts(text: text3,color:AppColors.paraColor,size: 10,),
 
 
       ],)

@@ -50,105 +50,126 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-      Container(
-      height: Dimensions.pageViewMainContainer,
+        Container(
+          height: Dimensions.pageViewMainContainer,
 
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.white, // Border color
-          width: 1.0, // Border width
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.white, // Border color
+              width: 1.0, // Border width
+            ),
+          ),
+          //mshan tkoon scrollable
+          child: PageView.builder(
+            // conroller to make the page appear a little bit
+            controller: pageController,
+            itemCount: 5,
+            itemBuilder: (context, position) {
+              return _buildPageItem(position);
+            },
+          ),
         ),
-      ),
-      //mshan tkoon scrollable
-      child: PageView.builder(
-        // conroller to make the page appear a little bit
-        controller: pageController,
-        itemCount: 5,
-        itemBuilder: (context, position) {
-          return _buildPageItem(position);
-        },
-      ),
-    ),
 
 // needs yaml
-    new DotsIndicator(
-    dotsCount: 5,
-    position: currentpage,
-    decorator: DotsDecorator(
-    size: Size.square(Dimensions().DDh(9)),
-    activeColor: AppColors.mainColor,
-    activeSize: Size(Dimensions().DDh(18), Dimensions().DDh(9)),
-    activeShape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(5.0)),
-    ),
-    ),
+        new DotsIndicator(
+          dotsCount: 5,
+          position: currentpage,
+          decorator: DotsDecorator(
+            size: Size.square(Dimensions().DDh(9)),
+            activeColor: AppColors.mainColor,
+            activeSize: Size(Dimensions().DDh(18), Dimensions().DDh(9)),
+            activeShape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0)),
+          ),
+        ),
 
-    SizedBox(
-    height: Dimensions().DDh(20),
-    ),
+        SizedBox(
+          height: Dimensions().DDh(20),
+        ),
 
-    Container(
-    margin: EdgeInsets.only(left: Dimensions().DDw(20)),
-    child: Row(
-    crossAxisAlignment: CrossAxisAlignment.end,
-    children: [
-    BigTexts(text: 'Popular'),
-    SizedBox(width: Dimensions().DDw(20)),
-    BigTexts(text: ". ", color: AppColors.textColor),
-    SizedBox(width: Dimensions().DDw(10)),
-    Container(
-    child: SmallTexts(
-    text: "Food Pairing", color: AppColors.textColor))
-    ],
-    ),
-    ),
+        Container(
+          margin: EdgeInsets.only(left: Dimensions().DDw(20),bottom:Dimensions().DDh(1) ),
 
-    SizedBox(
-    height: Dimensions().DDh(10),
-    ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              BigTexts(text: 'Popular'),
+              SizedBox(width: Dimensions().DDw(20)),
+              BigTexts(text: ". ", color: AppColors.textColor),
+              SizedBox(width: Dimensions().DDw(10)),
 
-    Container(height: Dimensions().DDh(500),
-      child: ListView.builder(
-        physics: NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-          itemCount: 5,
-          itemBuilder: (context,index){
-            return Container(
-              margin: EdgeInsets.only(left:Dimensions().DDw(10),right:Dimensions().DDw(20), top: Dimensions().DDh(10)),
-              child: Row(
-                children: [
-                  Container(
-                    width: Dimensions().DDw(110),
-                    height: Dimensions().DDh(110),
-                    margin: EdgeInsets.only(
-                        left: Dimensions().DDw(10),
-                        right: Dimensions().DDw(5),
-                        top: Dimensions().DDh(10)),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.black12,
+              Container(
+                  child: SmallTexts(
+                      text: "Food Pairing", color: AppColors.textColor))
+            ],
+          ),
+        ),
+
+
+        ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: 5,
+            itemBuilder: (context, index) {
+              return Container(
+                margin: EdgeInsets.only(
+                    left: Dimensions().DDw(10),
+                    //right: Dimensions().DDw(20),
+                    //top: Dimensions().DDh(3)
+                    ),
+                child: Row(
+                  children: [
+                    Container(
+                      width: Dimensions().DDw(120),
+                      height: Dimensions().DDh(120),
+                      margin: EdgeInsets.only(
+                          left: Dimensions().DDw(10),
+                          right: Dimensions().DDw(5),
+                          top: Dimensions().DDh(5)),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.black12,
+                          ),
+                          borderRadius:
+                              BorderRadius.circular(Dimensions().DDh(10)),
+                          //if index is even then the first color if not then the second color
+                          image: DecorationImage(
+                              // la y3abbi kl el box
+                              fit: BoxFit.cover,
+                              image: AssetImage("assets/imgs/food2.jpg"))),
+                      // Return the widget for the page item
+                    ),
+                    Expanded(
+                      child: Container(
+                        height: Dimensions().DDh(110),
+                        //width: Dimensions().DDw(225),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(Dimensions().DDh(20)),
+                                bottomRight:
+                                    Radius.circular(Dimensions().DDh(20))),
+                          ),
+                        child: Padding(
+                          padding:  EdgeInsets.only(top: Dimensions().DDh(5),right: Dimensions().DDw(2)),
+                          child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              BigTexts(text: "Nutritious Fruit Meal in china"),
+                              SizedBox(height: Dimensions().DDh(12),),
+                              SmallTexts(text: "with chinees charectaristics",color: AppColors.paraColor,),
+                              SizedBox(height: Dimensions().DDh(12),),
+                              IconsAndWidget(text1: "Normal",text2:"17KM",text3: "32km",),
+                            ],
+                          ),
                         ),
-                        borderRadius: BorderRadius.circular(Dimensions().DDh(10)),
-                        //if index is even then the first color if not then the second color
-                        image: DecorationImage(
-                          // la y3abbi kl el box
-                            fit: BoxFit.cover,
-                            image: AssetImage("assets/imgs/food2.jpg"))),
-                    // Return the widget for the page item
-                  ),
-                  Column(children: [
-                    //BigTexts(text: "Nutritious Fruit Meal indicator")
-
-                  ],)
-                ],
-              ),
-            );
-          }),
-    )
-    ,
-
-    ]
-    ,
+                      ),
+                    )
+                  ],
+                ),
+              );
+            }),
+      ],
     );
   }
 
@@ -211,7 +232,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 //if index is even then the first color if not then the second color
                 color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),
                 image: DecorationImage(
-                  // la y3abbi kl el box
+                    // la y3abbi kl el box
                     fit: BoxFit.cover,
                     image: AssetImage("assets/imgs/food2.jpg"))),
             // Return the widget for the page item
@@ -244,9 +265,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   padding: EdgeInsets.only(
                       top: Dimensions().DDh(10),
                       left: Dimensions().DDw(15),
-                      right: Dimensions().DDw(15)),
+                      right: Dimensions().DDw(11)),
                   decoration: BoxDecoration(
-                    // lama ma 7tet hey dal for moraba3
+                      // lama ma 7tet hey dal for moraba3
                       borderRadius: BorderRadius.circular(Dimensions().DDh(30)),
                       border: Border.all(
                         color: Colors.white, // Border color
@@ -265,8 +286,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                             Wrap(
                                 children: List.generate(
                                     5,
-                                        (index) =>
-                                        Icon(
+                                    (index) => Icon(
                                           Icons.star,
                                           color: AppColors.mainColor,
                                           size: Dimensions().DDh(15),
@@ -280,7 +300,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                           ],
                         ),
                         SizedBox(height: Dimensions.sizeBox10h),
-                        IconsAndWidget(),
+                        IconsAndWidget(text1:"Normal", text2: "1.7KM",text3:"32 min"),
                       ])),
             ),
           ),
