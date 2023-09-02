@@ -8,7 +8,7 @@ import 'package:front_end_food/Widget/small_texts.dart';
 import 'package:front_end_food/utils/colors.dart';
 import 'package:front_end_food/utils/dimensions.dart';
 
-import 'Widget/icons_and_text.dart';
+import '../../Widget/icons_and_text.dart';
 
 class FoodPageBody extends StatefulWidget {
   const FoodPageBody({Key? key}) : super(key: key);

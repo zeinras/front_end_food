@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:front_end_food/Home/main_food_page.dart';
+import 'package:flutter/rendering.dart';
+import 'package:front_end_food/pages/Home/main_food_page.dart';
+import 'package:front_end_food/pages/food/popular_food_details.dart';
 import 'package:get/get.dart';
 void main() {
+  debugPaintSizeEnabled = false;
   runApp(const MyApp());
 }
 
@@ -18,7 +21,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MainFoodPage(),
+      home: const PopularFoodDetail(),
+
     );
   }
 }
